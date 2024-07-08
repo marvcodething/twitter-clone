@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt';
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.route.js";
 import postRoutes from "./routes/post.route.js";
+import notificationRoutes from "./routes/notification.route.js";
 import {v2 as cloudinary} from "cloudinary";
 dotenv.config();
 cloudinary.config({
@@ -25,6 +26,7 @@ app.use(cookieParser()); //middleware to parse cookies
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 app.listen(PORT,() => {
     console.log(`server is up and running on port ${PORT}`);
