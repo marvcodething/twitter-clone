@@ -105,7 +105,7 @@ const Post = ({ post }) => {
 										className='flex gap-2 items-center mt-4 border-t border-gray-600 pt-2'
 										onSubmit={handlePostComment}
 									>
-										<textarea name = 'comment' id = 'comment'
+										<textarea name = 'comment'
 											className='textarea w-full p-1 rounded text-md resize-none border focus:outline-none  border-gray-800'
 											placeholder='Add a comment...'
 											value={comment}
