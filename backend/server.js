@@ -18,7 +18,7 @@ cloudinary.config({
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-app.use(express.json()); //middleware to parse req.body
+app.use(express.json({limit:"5mb"})); //middleware to parse req.body
 app.use(express.urlencoded({extended: true})); //middleware to parse urlencoded data
 
 app.use(cookieParser()); //middleware to parse cookies
