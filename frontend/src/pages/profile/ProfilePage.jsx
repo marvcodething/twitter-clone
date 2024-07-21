@@ -73,6 +73,30 @@ const ProfilePage = () => {
 		refetch();
 	}, [username, refetch]);
 
+	const postCount = async (userId) => {
+		const result = await Post.aggregate([
+		  { 
+			$match: { 
+			  user_id: ObjectId(userId)  // Use the passed userId parameter
+			} 
+		  },
+		  {
+			$group: {
+			  _id: "$user_id",
+			  totalPosts: { $sum: 1 }  // Renamed count to totalPosts for clarity
+			}
+		  },
+		  {
+			$project: {
+			  _id: 0,
+			  totalPosts: 1
+			}
+		  }
+		]);
+	  
+		return result.length > 0 ? result[0].totalPosts : 0;  // Return the count or 0 if no posts found
+	  }
+
 	return (
 		<>
 			<div className='flex-[4_4_0]  border-r border-gray-700 min-h-screen '>
@@ -88,7 +112,7 @@ const ProfilePage = () => {
 								</Link>
 								<div className='flex flex-col'>
 									<p className='font-bold text-lg'>{user?.fullName}</p>
-									<span className='text-sm text-slate-500'>{user.posts.length} posts</span>
+									<span className='text-sm text-slate-500'>{postCount} posts</span>
 								</div>
 							</div>
 							{/* COVER IMG */}
