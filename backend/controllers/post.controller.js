@@ -152,6 +152,7 @@ export const getLikedPosts = async (req, res) => {
             path: "comments.user",
             select: "-password",
         });
+        res.status(200).json(likedPosts);
     } catch (error) {
         console.log("Error in getLikedPosts controller: ",error.message);
         res.status(500).json({error:error.message});
