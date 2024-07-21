@@ -46,6 +46,7 @@ const SignUpPage = () => {
 		},
 		onSuccess: () => {
 			toast.success("Account created successfully");
+			window.location.reload();
 		},
 		onError: (error) => {
 			console.error(error);
