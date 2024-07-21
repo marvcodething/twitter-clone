@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import Notification from "../../../backend/models/notification.model";
 
 const useFollow = () => {
 	const queryClient = useQueryClient();
@@ -13,10 +12,6 @@ const useFollow = () => {
 				});
 
 				const data = await res.json();
-                console.log(data);
-                console.log(res.ok);
-
-                
 				if (!res.ok) {
 					throw new Error(data.error || "Something went wrong!");
 				}
